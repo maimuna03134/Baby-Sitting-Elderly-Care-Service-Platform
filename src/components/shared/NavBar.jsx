@@ -39,16 +39,17 @@ export default function NavBar() {
             >
               Home
             </Link>
+           
 
             {/* Services Dropdown */}
             <div className="relative">
-              <button
+              <Link href={'/services'}
                 onClick={() => setServicesOpen((prev) => !prev)}
                 className="flex items-center gap-1 text-gray-700 hover:text-[#3590c5] font-medium transition"
               >
                 Services
                 <ChevronDown className="w-4 h-4" />
-              </button>
+              </Link>
 
               {servicesOpen && (
                 <div
