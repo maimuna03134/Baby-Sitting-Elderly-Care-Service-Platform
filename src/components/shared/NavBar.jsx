@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown, User, LogOut } from "lucide-react";
+import { Menu, X, ChevronDown, User, LogOut, Heart } from "lucide-react";
+import Container from "./Container";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,20 +19,23 @@ export default function NavBar() {
   ];
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white shadow-md sticky top-0 z-50">
+      <Container className={"px-4 sm:px-6 lg:px-8"}>
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-orange-500">Care</span>
-            <span className="text-2xl font-bold text-gray-800">Nest</span>
+          <Link href="/" className="flex items-center ">
+            <span className="text-2xl font-bold text-[#2e6b8c]">Care</span>
+            <span className="relative text-2xl font-bold text-[#284251]">
+              Nest
+              <Heart className="absolute -top-1 -right-3 h-4 w-4 text-[#c46934]" />
+            </span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-orange-500 font-medium transition"
+              className="text-gray-700 hover:text-[#3590c5] font-medium transition"
             >
               Home
             </Link>
@@ -40,7 +44,7 @@ export default function NavBar() {
             <div className="relative">
               <button
                 onClick={() => setServicesOpen((prev) => !prev)}
-                className="flex items-center gap-1 text-gray-700 hover:text-orange-500 font-medium transition"
+                className="flex items-center gap-1 text-gray-700 hover:text-[#3590c5] font-medium transition"
               >
                 Services
                 <ChevronDown className="w-4 h-4" />
@@ -56,7 +60,7 @@ export default function NavBar() {
                       key={service.href}
                       href={service.href}
                       onClick={() => setServicesOpen(false)}
-                      className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition"
+                      className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-[#3590c5] transition"
                     >
                       {service.name}
                     </Link>
@@ -67,14 +71,14 @@ export default function NavBar() {
 
             <Link
               href="/aboutUs"
-              className="text-gray-700 hover:text-orange-500 font-medium transition"
+              className="text-gray-700 hover:text-[#3590c5] font-medium transition"
             >
               About Us
             </Link>
 
             <Link
               href="/contactUs"
-              className="text-gray-700 hover:text-orange-500 font-medium transition"
+              className="text-gray-700 hover:text-[#3590c5] font-medium transition"
             >
               Contact Us
             </Link>
@@ -82,7 +86,7 @@ export default function NavBar() {
             {user && (
               <Link
                 href="/my-bookings"
-                className="text-gray-700 hover:text-orange-500 font-medium transition"
+                className="text-gray-700 hover:text-[#3590c5] font-medium transition"
               >
                 My Bookings
               </Link>
@@ -105,13 +109,13 @@ export default function NavBar() {
               <>
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-gray-700 hover:text-orange-500 font-medium transition"
+                  className="px-4 py-2 text-gray-700 hover:text-[#3590c5] font-medium transition"
                 >
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 font-medium transition"
+                  className="px-6 py-2 bg-[#275772] text-white rounded-lg hover:bg-[#1b3a4c] font-medium transition"
                 >
                   Register
                 </Link>
@@ -133,7 +137,7 @@ export default function NavBar() {
           <div className="md:hidden py-4 space-y-3 border-t">
             <Link
               href="/"
-              className="block text-gray-700 hover:text-orange-500 font-medium"
+              className="block text-gray-700 hover:text-[#3590c5] font-medium"
             >
               Home
             </Link>
@@ -145,7 +149,7 @@ export default function NavBar() {
                   <Link
                     key={service.href}
                     href={service.href}
-                    className="block text-gray-600 hover:text-orange-500"
+                    className="block text-gray-600 hover:text-[#3590c5]"
                   >
                     {service.name}
                   </Link>
@@ -155,14 +159,14 @@ export default function NavBar() {
 
             <Link
               href="/about"
-              className="block text-gray-700 hover:text-orange-500 font-medium"
+              className="block text-gray-700 hover:text-[#3590c5] font-medium"
             >
               About Us
             </Link>
 
             <Link
               href="/contact"
-              className="block text-gray-700 hover:text-orange-500 font-medium"
+              className="block text-gray-700 hover:text-[#3590c5] font-medium"
             >
               Contact Us
             </Link>
@@ -170,7 +174,7 @@ export default function NavBar() {
             {user && (
               <Link
                 href="/my-bookings"
-                className="block text-gray-700 hover:text-orange-500 font-medium"
+                className="block text-gray-700 hover:text-[#3590c5] font-medium"
               >
                 My Bookings
               </Link>
@@ -207,7 +211,7 @@ export default function NavBar() {
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </Container>
+    </div>
   );
 }
