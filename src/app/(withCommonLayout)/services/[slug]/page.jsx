@@ -25,14 +25,14 @@ const serviceDetailsPage = async ({ params }) => {
     return (
       <div className="text-center py-20">
         <h2 className="text-2xl font-bold">Service Not Found</h2>
-        <Link href="/" className="text-orange-500 underline">
+        <Link href="/" className="text-white underline">
           Go Back Home
         </Link>
       </div>
     );
   }
 
-  const {title,charge,overview, features, gallery,testimonial,faqs}=service||{}
+  const {title,charge,overview, features, gallery,testimonial,faqs, overviewImages}=service||{}
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,15 +66,23 @@ const serviceDetailsPage = async ({ params }) => {
               <p className="text-gray-600 leading-relaxed mb-6">
                 {overview}
               </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {[1, 2].map((i) => (
-                  <div key={i} className="bg-white rounded-lg shadow p-8">
-                    <FileImage className="h-16 w-16 text-gray-300 mx-auto mb-2" />
-                    <p className="text-center text-sm text-gray-500">
-                      Professional Care Image
-                    </p>
-                  </div>
-                ))}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {overviewImages ? overviewImages.map((img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt={service.title}
+                      className="w-full h-48 object-cover rounded-lg shadow"
+                    />
+                  )) :
+                    ([1, 2].map((i) => (
+                      <div key={i} className="bg-white rounded-lg shadow p-8">
+                        <FileImage className="h-16 w-16 text-gray-300 mx-auto mb-2" />
+                        <p className="text-center text-sm text-gray-500">
+                          Professional Care Image
+                        </p>
+                      </div>
+                    )))}
               </div>
             </section>
 
@@ -99,13 +107,22 @@ const serviceDetailsPage = async ({ params }) => {
             <section>
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Gallery</h2>
               <div className="grid md:grid-cols-2 gap-4">
-                
                 {gallery.map((item, i) => (
-                  <div key={i} className="bg-white rounded-lg shadow p-8">
-                    <FileImage className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-center text-gray-600">{item}</p>
+  <div key={i} className="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+    {item?.url ? (
+      <img
+        src={item.url}                
+        alt={item.caption || `Gallery image ${i + 1}`} 
+        className="h-32 w-full object-cover rounded mb-2"
+      />
+    ) : (
+      <FileImage className="h-16 w-16 text-gray-300 mx-auto mb-2" />
+    )}
+    <p className="text-center text-gray-600">{item?.caption || "No Image Available"}</p>
+  
                   </div>
                 ))}
+                  
               </div>
             </section>
 
@@ -166,8 +183,8 @@ const serviceDetailsPage = async ({ params }) => {
           </div>
         </div>
       </div>
-
-      <div className="bg-linear-to-r from-blue-500 to-blue-600 py-16">
+</Container>
+      <div className="bg-linear-to-r from-[#338dc1] to-[#1c3d50] py-16 ">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Receive Helpful Care Tips Weekly
@@ -176,7 +193,7 @@ const serviceDetailsPage = async ({ params }) => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg"
+              className="flex-1 px-4 py-3 rounded-lg border border-white focus:outline-none focus:ring-2 focus:ring-white"
             />
             <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold">
               Subscribe
@@ -184,7 +201,7 @@ const serviceDetailsPage = async ({ params }) => {
           </div>
         </div>
         </div>
-        </Container>
+        
     </div>
   );
 };

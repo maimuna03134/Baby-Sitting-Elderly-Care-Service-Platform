@@ -1,30 +1,31 @@
 "use client";
 
+import Container from "@/components/shared/Container";
 import { Heart, Shield, Clock, Users } from "lucide-react";
 import Image from "next/image";
 
 export default function AboutUs() {
   const values = [
     {
-      icon: <Heart className="w-12 h-12 text-orange-500" />,
+      icon: <Heart className="w-12 h-12 text-[#338dc1]" />,
       title: "Compassionate Care",
       description:
         "We treat every family member with love, respect, and dignity they deserve.",
     },
     {
-      icon: <Shield className="w-12 h-12 text-orange-500" />,
+      icon: <Shield className="w-12 h-12 text-[#338dc1]" />,
       title: "Trusted & Verified",
       description:
         "All our caretakers are background-checked and professionally trained.",
     },
     {
-      icon: <Clock className="w-12 h-12 text-orange-500" />,
+      icon: <Clock className="w-12 h-12 text-[#338dc1]" />,
       title: "24/7 Availability",
       description:
         "Round-the-clock support whenever your family needs care and assistance.",
     },
     {
-      icon: <Users className="w-12 h-12 text-orange-500" />,
+      icon: <Users className="w-12 h-12 text-[#338dc1]" />,
       title: "Experienced Team",
       description:
         "Years of expertise in providing quality care for all age groups.",
@@ -34,19 +35,19 @@ export default function AboutUs() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-linear-to-r from-orange-500 to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="bg-linear-to-r from-[#338dc1] to-[#1c3d50] text-white py-20">
+        <Container className={'px-4 sm:px-6 lg:px-8 text-center'}>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             About CareNest
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
             Making caregiving easy, secure, and accessible for every family
           </p>
-        </div>
+        </Container>
       </div>
 
       {/* Mission Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <Container className={'px-4 sm:px-6 lg:px-8 py-16'}>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -78,21 +79,21 @@ export default function AboutUs() {
             />
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Values Section */}
       <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+        <Container className={'px-4 sm:px-6 lg:px-8'}>
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
             Our Core Values
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
-                className="text-center p-6 rounded-lg hover:shadow-xl transition"
+                className="text-center p-6 rounded-lg hover:shadow-xl transition cursor-pointer bg-gray-50"
               >
-                <div className="flex justify-center mb-4">{value.icon}</div>
+                <div className="flex justify-center  mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">
                   {value.title}
                 </h3>
@@ -100,12 +101,12 @@ export default function AboutUs() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </div>
 
       {/* Stats Section */}
-      <div className="bg-linear-to-r from-orange-500 to-orange-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-linear-to-r from-[#1c3d50] to-[#338dc1] text-white py-16">
+        <Container className={'px-4 sm:px-6 lg:px-8'}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-4xl font-bold mb-2">500+</p>
@@ -124,11 +125,11 @@ export default function AboutUs() {
               <p className="text-sm opacity-90">Average Rating</p>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <Container className={'px-4 sm:px-6 lg:px-8 py-16 text-center'}>
         <h2 className="text-3xl font-bold text-gray-800 mb-4">
           Ready to Find the Perfect Caretaker?
         </h2>
@@ -136,10 +137,10 @@ export default function AboutUs() {
           Join thousands of families who trust CareNest for their loved ones
           wellbeing
         </p>
-        <button className="px-8 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 font-semibold transition">
+        <button className=" px-8 py-3 bg-[#1c3d50] text-white rounded-lg hover:bg-[#0a9bea] font-semibold transition">
           Get Started Today
         </button>
-      </div>
+      </Container>
     </div>
   );
 }

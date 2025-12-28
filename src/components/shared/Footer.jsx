@@ -132,17 +132,17 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-orange-500 shrink-0 mt-1" />
+                <MapPin className="w-5 h-5 text-white shrink-0 mt-1" />
                 <span className="text-sm">
                   123 Care Street, Dhaka-1212, Bangladesh
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-orange-500 shrink-0" />
+                <Phone className="w-5 h-5 text-white shrink-0" />
                 <span className="text-sm">+880 1234-567890</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-orange-500 shrink-0" />
+                <Mail className="w-5 h-5 text-white shrink-0" />
                 <span className="text-sm">contact@CareNest</span>
               </li>
             </ul>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import Container from "@/components/shared/Container";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -27,23 +28,23 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <div className="bg-linear-to-r from-orange-500 to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="bg-linear-to-r from-[#338dc1] to-[#1c3d50] text-white py-20">
+        <Container className={"px-4 sm:px-6 lg:px-8 text-center"}>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-lg md:text-xl opacity-90">
             We are here to help! Reach out to us anytime
           </p>
-        </div>
+        </Container>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <Container className={'px-4 sm:px-6 lg:px-8 py-16'}>
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <Phone className="w-6 h-6 text-orange-500" />
+                <div className="p-3 bg-[#1c3d50] rounded-lg">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
@@ -55,8 +56,8 @@ export default function ContactPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <Mail className="w-6 h-6 text-orange-500" />
+                <div className="p-3 bg-[#1c3d50] rounded-lg">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
@@ -68,8 +69,8 @@ export default function ContactPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <MapPin className="w-6 h-6 text-orange-500" />
+                <div className="p-3 bg-[#1c3d50] rounded-lg">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
@@ -85,8 +86,8 @@ export default function ContactPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <Clock className="w-6 h-6 text-orange-500" />
+                <div className="p-3 bg-[#1c3d50] rounded-lg">
+                  <Clock className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">
@@ -119,7 +120,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a9bea] focus:border-transparent"
                       placeholder="John Doe"
                     />
                   </div>
@@ -134,7 +135,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a9bea] focus:border-transparent"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -150,7 +151,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a9bea] focus:border-transparent"
                       placeholder="+880 1234-567890"
                     />
                   </div>
@@ -165,7 +166,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a9bea] focus:border-transparent"
                       placeholder="How can we help?"
                     />
                   </div>
@@ -181,14 +182,14 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a9bea] focus:border-transparent resize-none"
                     placeholder="Tell us about your care needs..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full md:w-auto px-8 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 font-semibold transition flex items-center justify-center gap-2"
+                  className="w-full md:w-auto px-8 py-3 bg-[#1c3d50] text-white rounded-lg hover:bg-[#0a9bea] font-semibold transition flex items-center justify-center gap-2"
                 >
                   <Send className="w-5 h-5" />
                   Send Message
@@ -197,9 +198,10 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        </Container>
       </div>
 
       
-    </div>
+    
   );
 }
