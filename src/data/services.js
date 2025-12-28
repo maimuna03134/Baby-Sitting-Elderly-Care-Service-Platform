@@ -1,10 +1,13 @@
 import { Baby, UserCheck, Activity } from "lucide-react";
 
-export const servicesData = [
+export const servicesData =
+  [
   {
-    id: 1,
+    id: 'baby-care',
     title: "Baby Care",
     slug: "baby-care",
+    shortDescription:
+      "Professional and loving babysitting service for your child.",
     description:
       "Professional and loving care for your little ones with experienced babysitters.",
     icon: Baby,
@@ -57,9 +60,11 @@ export const servicesData = [
     ],
   },
   {
-    id: 2,
+    id: 'elderly-care',
     title: "Elderly Service",
     slug: "elderly-care",
+    shortDescription:
+      "Trusted care and companionship for elderly family members.",
     description:
       "Compassionate care for elderly family members with dignity and respect.",
     icon: UserCheck,
@@ -110,9 +115,11 @@ export const servicesData = [
     ],
   },
   {
-    id: 3,
+    id: 'sick-people-care',
     title: "Sick People Service",
     slug: "sick-people-care",
+    shortDescription:
+      "Professional home care for sick and recovering patients.",
     description:
       "Dedicated care for patients recovering at home with medical support.",
     icon: Activity,

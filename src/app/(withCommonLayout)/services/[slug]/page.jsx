@@ -1,28 +1,61 @@
-import { Check, ChevronDown, FileImage, Mail, Phone, Star, User } from "lucide-react";
+import { servicesData } from "@/data/services";
+import {
+  Check,
+  FileImage,
+  Mail,
+  Phone,
+  Star,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import FAQSection from "./FAQSection";
+import Container from "@/components/shared/Container";
 
 const serviceDetailsPage = async ({ params }) => {
+ 
   const { slug } = await params;
   console.log(slug);
+
+    const service = servicesData.find(
+    (item) => item.id === slug
+  );
+
+   if (!service) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold">Service Not Found</h2>
+        <Link href="/" className="text-orange-500 underline">
+          Go Back Home
+        </Link>
+      </div>
+    );
+  }
+
+  const {title,charge,overview, features, gallery,testimonial,faqs}=service||{}
+
   return (
     <div className="min-h-screen bg-gray-50">
+     
+       
       <div className="bg-slate-700 text-white py-4">
+        <Container>   
         <div className="max-w-6xl mx-auto px-4 flex items-center text-sm">
           <Link href="/" className="hover:text-rose-300">
             Home
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-rose-300">Baby Care</span>
-        </div>
+          <span className="text-rose-300">{title}</span>
+          </div>
+    </Container>      
       </div>
 
       <div className="bg-slate-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold">Baby Care</h1>
+          <h1 className="text-5xl font-bold">{title}</h1>
         </div>
       </div>
-
+<Container>
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-12">
@@ -31,11 +64,7 @@ const serviceDetailsPage = async ({ params }) => {
                 Overview
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Our Baby Care service provides expert care for your little ones,
-                ensuring they feel loved, entertained, safe, and engaged
-                throughout their day. Our caregivers are trained professionals
-                who understand child development and create a nurturing
-                environment for your baby.
+                {overview}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 {[1, 2].map((i) => (
@@ -57,100 +86,51 @@ const serviceDetailsPage = async ({ params }) => {
                 Comprehensive support to ensure highest quality care.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
-                <p>Certified and background-checked caregivers</p>
-                {/* {service.features.map((f, i) => (
+               
+                {features.map((f, i) => (
                   <div key={i} className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
                     <span className="text-gray-700">{f}</span>
                   </div>
-                ))} */}
+                ))}
               </div>
             </section>
 
             <section>
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Gallery</h2>
               <div className="grid md:grid-cols-2 gap-4">
-                <p className="text-black">Baby playing with caregiver</p>
-                {/* {service.gallery.map((item, i) => (
+                
+                {gallery.map((item, i) => (
                   <div key={i} className="bg-white rounded-lg shadow p-8">
                     <FileImage className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-center text-gray-600">{item}</p>
                   </div>
-                ))} */}
+                ))}
               </div>
             </section>
 
-            <section>
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                Client Stories
-              </h2>
+           <section>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Client Stories</h2>
               <div className="bg-white rounded-lg shadow-lg p-8">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-700 text-lg italic mb-6">
-                  The caregivers treat my child with such love and patience
-                  every day. Their support brings our family incredible peace of
-                  mind
-                </p>
+                <div className="flex mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}</div>
+                <p className="text-gray-700 text-lg italic mb-6">"{testimonial.text}"</p>
                 <div className="flex items-center">
-                  <div className="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                    <User className="h-6 w-6 text-gray-500" />
-                  </div>
+                  <div className="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center mr-4"><User className="h-6 w-6 text-gray-500" /></div>
                   <div>
-                    <div className="font-semibold text-gray-800">
-                      Ayesha Rahman
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      Mother of 18-month-old
-                    </div>
+                    <div className="font-semibold text-gray-800">{testimonial.author}</div>
+                    <div className="text-sm text-gray-500">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                Essential Answers For Baby Care
-              </h2>
-              <div className="space-y-4 text-black">
-                <p>What age groups do you provide care for?</p>
-                {/* {service.faqs.map((faq, i) => (
-                  <div key={i} className="bg-white rounded-lg shadow">
-                    <button
-                      onClick={() =>
-                        setOpenFaqIndex(openFaqIndex === i ? null : i)
-                      }
-                      className="w-full flex items-center justify-between p-6 text-left"
-                    >
-                      <span className="font-semibold text-gray-800">
-                        {faq.question}
-                      </span>
-                      <ChevronDown
-                        className={`h-5 w-5 text-gray-500 transition ${
-                          openFaqIndex === i ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {openFaqIndex === i && (
-                      <div className="px-6 pb-6 text-gray-600">
-                        {faq.answer}
-                      </div>
-                    )}
-                  </div>
-                ))} */}
-              </div>
-            </section>
+            
+           <FAQSection title={title} faqs={faqs} />
           </div>
 
           <div className="lg:col-span-1">
             <div className="bg-slate-800 text-white rounded-lg p-8 sticky top-24">
-              <h3 className="text-2xl font-bold mb-4">Baby Care</h3>
+              <h3 className="text-2xl font-bold mb-4">{title}</h3>
               <p className="text-gray-300 mb-6">
                 Expert care with 24/7 support for your loved ones.
               </p>
@@ -163,7 +143,7 @@ const serviceDetailsPage = async ({ params }) => {
                 ))}
               </div>
               <div className="mb-6">
-                <div className="text-4xl font-bold mb-2">$ 400</div>
+                <div className="text-4xl font-bold mb-2">$ {charge}</div>
                 <div className="text-gray-300 text-sm">Per Hour</div>
               </div>
               <button
@@ -203,7 +183,8 @@ const serviceDetailsPage = async ({ params }) => {
             </button>
           </div>
         </div>
-      </div>
+        </div>
+        </Container>
     </div>
   );
 };
