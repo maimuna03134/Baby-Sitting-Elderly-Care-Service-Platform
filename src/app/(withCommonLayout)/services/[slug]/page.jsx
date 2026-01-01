@@ -46,6 +46,7 @@ const serviceDetailsPage = async ({ params }) => {
           </Link>
           <span className="mx-2">/</span>
           <span className="text-rose-300">{title}</span>
+          
           </div>
     </Container>      
       </div>
@@ -53,7 +54,14 @@ const serviceDetailsPage = async ({ params }) => {
       <div className="bg-slate-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold">{title}</h1>
+           <Link href="/booking" 
+                // onClick={handleBookService}
+                className=" bg-rose-500 text-white py-3 px-2 rounded-lg font-semibold hover:bg-rose-600 transition mt-8 inline-block"
+              >
+               Book Now
+              </Link>
         </div>
+       
       </div>
 <Container>
       <div className="max-w-6xl mx-auto px-4 py-12">
@@ -162,13 +170,13 @@ const serviceDetailsPage = async ({ params }) => {
               <div className="mb-6">
                 <div className="text-4xl font-bold mb-2">$ {charge}</div>
                 <div className="text-gray-300 text-sm">Per Hour</div>
-              </div>
-              <button
-                // onClick={handleBookService}
-                className="w-full bg-rose-500 text-white py-4 rounded-lg font-semibold hover:bg-rose-600 transition mb-4"
-              >
-                Choose Service
-              </button>
+                </div>
+                <Link href="/booking">
+                  <button className="w-full bg-rose-500 text-white py-4 rounded-lg font-semibold hover:bg-rose-600 transition mb-4">
+                    Book Now
+                  </button>
+                </Link>
+              
               <div className="border-t border-gray-600 pt-6">
                 <div className="flex items-center mb-3">
                   <Phone className="h-5 w-5 mr-3" />
